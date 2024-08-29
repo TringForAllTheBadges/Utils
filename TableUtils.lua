@@ -24,4 +24,22 @@ function TableUtils.map(t, f)
     return nt
 end
 
+function TableUtils.filter(t, f)
+    local nt = {}
+    for _, v in ipairs(t) do
+        if f(v) then
+            table.insert(nt, v)
+        end
+    end
+    return nt
+end
+
+function TableUtils.reduce(t, f, init)
+    local acc = init
+    for _, v in ipairs(t) do
+        acc = f(acc, v)
+    end
+    return acc
+end
+
 return TableUtils
